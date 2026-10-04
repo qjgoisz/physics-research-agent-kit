@@ -85,10 +85,14 @@ for (const preset of presets) {
 }
 
 out.push('# END dsh-research-preset-v2')
-mkdirSync(join(ROOT, 'dist'), { recursive: true })
-writeFileSync(join(ROOT, 'dist', 'desktop-preset.patch.yml'), `${out.join('\n')}\n`)
-
-console.log(`已从 ${STANDARD} 继承 standard 工具组合。`)
-console.log(`已验证 ${packageNames.length} 个 @scope 插件引用。`)
-console.log(`已生成 ${presets.length} 个预设到 dist/desktop-preset.patch.yml：`)
-for (const preset of presets) console.log(`  ${preset.id.padEnd(20)} ${preset.name}`)
+const bundle = join(ROOT, 'dist', 'bundle')
+mkdirSync(bundle, { recursive: true })
+writeFileSync(join(bundle, 'cordis.patch.yml'), `${out.join('\n')}\n`)
+const version = JSON.parse(read(join(DSH_ROOT, 'node_modules/@deepseek-ai/dsh/package.json'))).version
+writeFileSync(join(bundle, 'package.json'), JSON.stringify({
+  name: '@local/dsh-research-preset-v2', version: '1.0.0', private: true,
+  description: 'Locally generated DSH preset bundle',
+  peerDependencies: { '@deepseek-ai/dsh': version },
+  dsh: { engines: { dsh: version }, bundle: { patch: './cordis.patch.yml' } },
+}, null, 2) + '\n')
+console.log(`已生成 dist/bundle；继承 ${STANDARD}，适配 DSH ${version}。`)

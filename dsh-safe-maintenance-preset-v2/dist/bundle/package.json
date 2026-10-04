@@ -1,0 +1,17 @@
+{
+  "name": "@local/dsh-safe-maintenance-preset-v2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Locally generated DSH preset bundle",
+  "peerDependencies": {
+    "@deepseek-ai/dsh": "0.2.0-rc.2"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": "0.2.0-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

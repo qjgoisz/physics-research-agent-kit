@@ -24,7 +24,7 @@
 | [`dsh-research-preset-v2/`](dsh-research-preset-v2/README.md) | 科研通用、调研、模拟和写作四个预设。 |
 | [`dsh-safe-maintenance-preset-v2/`](dsh-safe-maintenance-preset-v2/README.md) | 安全维护预设。 |
 
-两套 DSH 预设都会从当前桌面版的 `preset-standard` 动态继承工具组合，只替换 persona。安装器采用带首尾标记的受管理补丁块，写入前创建备份，支持幂等更新、检查和卸载。
+两套 DSH 预设从当前桌面版的 `preset-standard` 动态继承工具组合，只替换 persona，并作为本地 bundle 插件安装。依赖与启用列表交由 DSH 插件管理器维护，不直接写用户 profile 补丁。
 
 ## 设计原则
 
@@ -81,7 +81,7 @@ cp -a skills/safe-system-maintenance "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```bash
 cd dsh-research-preset-v2
 npm run generate
-less dist/desktop-preset.patch.yml
+less dist/bundle/cordis.patch.yml
 npm run install
 ```
 
@@ -98,7 +98,7 @@ npm run check
 ```bash
 cd dsh-safe-maintenance-preset-v2
 npm run generate
-less dist/desktop-preset.patch.yml
+less dist/bundle/cordis.patch.yml
 npm run install
 ```
 
@@ -108,7 +108,7 @@ npm run install
 npm run check
 ```
 
-上述安装脚本默认写入用户的 `~/.dsh/profiles/desktop/cordis.patch.yml`，不需要也不应使用 root。执行前请审查生成补丁。卸载和回滚方法见各自目录的 README。
+上述脚本通过桌面 CLI 安装本地 bundle，不需要 root。旧补丁用户先执行各目录的 `node scripts/migrate-legacy.mjs`（备份后仅移除旧区块）。也可在桌面 Plugins 页面安装生成的 bundle 目录。升级后需重新生成；完整安装、迁移、卸载与回滚方法见各自 README。
 
 ## 项目文档约定
 
