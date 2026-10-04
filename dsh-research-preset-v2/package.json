@@ -1,0 +1,12 @@
+{
+  "name": "dsh-research-preset-v2",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/regenerate.mjs",
+    "check": "node scripts/check.mjs",
+    "install": "node scripts/install.mjs",
+    "uninstall": "node scripts/install.mjs --uninstall"
+  }
+}

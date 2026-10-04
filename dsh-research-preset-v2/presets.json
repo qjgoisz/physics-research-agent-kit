@@ -1,0 +1,30 @@
+[
+  {
+    "id": "research",
+    "name": "科研模式",
+    "description": "通用理论物理科研模式：以证据等级、可复现性、项目交接和及时提出关键异议为核心。",
+    "order": 10,
+    "phase": "phases/general.md"
+  },
+  {
+    "id": "research-explore",
+    "name": "科研 · 调研模式",
+    "description": "文献核验、概念讲解、理论推导、结果复现、想法评估与可证伪研究问题设计。",
+    "order": 11,
+    "phase": "phases/explore.md"
+  },
+  {
+    "id": "research-numerics",
+    "name": "科研 · 模拟模式",
+    "description": "可复现的模拟、数据分析、绘图、收敛与误差验证，以及按物理问题维护 Results.md。",
+    "order": 12,
+    "phase": "phases/numerics.md"
+  },
+  {
+    "id": "research-writing",
+    "name": "科研 · 写作模式",
+    "description": "理论物理论文起草与编辑、投稿规则核验、术语和风格一致性、主张追溯与审稿人检查。",
+    "order": 13,
+    "phase": "phases/writing.md"
+  }
+]

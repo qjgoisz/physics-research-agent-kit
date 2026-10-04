@@ -1,0 +1,6 @@
+{
+  "id": "safe-maintenance",
+  "name": "安全维护模式",
+  "description": "Linux 系统诊断、维护规划、配置所有权与风险审查，以及可验证、可回滚的用户执行步骤。",
+  "order": 2
+}
